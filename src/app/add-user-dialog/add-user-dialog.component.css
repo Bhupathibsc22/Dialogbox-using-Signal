@@ -1,0 +1,38 @@
+.profile-edit {
+    width: 300px;
+    margin: auto;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label, input, button {
+    margin-bottom: 10px;
+  }
+  
+  input {
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  button[type="close"] {
+    background-color: #ccc;
+    color: #fff;
+  }
+  
+  button[type="submit"] {
+    background-color: #8a2be2;
+    color: #fff;
+  }
+  

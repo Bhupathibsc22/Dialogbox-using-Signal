@@ -1,0 +1,31 @@
+.user-list-button {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 916px;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+.my-table {
+    width: 70%; 
+    border-collapse: collapse;
+  }
+    .my-table th {
+        background-color: #8a2be2;
+        color: white; 
+    padding: 10px; 
+  }
+    .my-table td {
+    border: 1px solid black; 
+    padding: 10px;
+  }
+  .my-table tr:nth-child(even) {
+    background-color: #f2f2f2; 
+  }
+  
