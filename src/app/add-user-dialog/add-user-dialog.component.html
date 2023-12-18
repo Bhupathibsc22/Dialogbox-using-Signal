@@ -1,20 +1,19 @@
 <div class="profile-edit">
-    <h2>Edit Profile</h2>
-    <form >
-      <label for="first-name">First Name</label>
-      <input type="text" id="first-name" [(ngModel)]="formData.firstName" [ngModelOptions]="{standalone: true}" placeholder="First Name">
-  
-      <label for="last-name">Last Name</label>
-      <input type="text" id="last-name" [(ngModel)]="formData.lastName" [ngModelOptions]="{standalone: true}" placeholder="Last Name">
-  
-      <label for="mobile-number">Mobile Number</label>
-      <input type="text" id="username" [(ngModel)]="formData.mobileNumber" [ngModelOptions]="{standalone: true}" placeholder="Mobile Number">
-  
-      <label for="email">Email</label>
-      <input type="email" id="email" [(ngModel)]="formData.email" [ngModelOptions]="{standalone: true}" placeholder="Email">
-  
-      <button (click)="close()" type="close">Close</button>
-      <button (click)="saveData()" type="submit">Save changes</button>
-    </form>
-  </div>
-  
+  <h2>Edit Profile</h2>
+  <form [formGroup]="userForm">
+    <label for="first-name">First Name</label>
+    <input type="text" id="first-name" formControlName="firstName" placeholder="First Name">
+
+    <label for="last-name">Last Name</label>
+    <input type="text" id="last-name" formControlName="lastName" placeholder="Last Name">
+
+    <label for="mobile-number">Mobile Number</label>
+    <input type="text" id="mobile-number" formControlName="mobileNumber" placeholder="Mobile Number">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email" placeholder="Email">
+
+    <button (click)="close()" type="button">Close</button>
+    <button (click)="saveData()" type="button">Save changes</button>
+  </form>
+</div>

@@ -1,32 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../common.service';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-user-dialog',
   standalone: true,
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './add-user-dialog.component.html',
   styleUrl: './add-user-dialog.component.css'
 })
-export class AddUserDialogComponent {
-  constructor(private commonService:CommonService, private dialog: MatDialog){}
+export class AddUserDialogComponent implements OnInit {
+  userForm!: FormGroup;
 
-  saveData(){
-    this.commonService.users.update(items=>[...items,{...this.formData}]);
-    console.log(this.formData)
-    this.dialog.closeAll();
+  constructor(private dialog: MatDialog, private commonService: CommonService, private fb: FormBuilder) { }
+
+  ngOnInit() {
+    this.initForm();
+  }
+  initForm() {
+    this.userForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      mobileNumber: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+    });
   }
 
-    formData = {
-      firstName: '',
-      lastName: '',
-      mobileNumber: '',
-      email: '',
-    };
-
-    close(){
-    this.dialog.closeAll();
+  saveData() {
+    if (this.userForm.valid) {
+      this.commonService.users.update(items => [...items, { ...this.userForm.getRawValue() }]);
+      console.log(this.userForm.value);
+      this.dialog.closeAll();
     }
+  }
+
+  formData = {
+    firstName: '',
+    lastName: '',
+    mobileNumber: '',
+    email: '',
+  };
+
+  close() {
+    this.dialog.closeAll();
+  }
 }
